@@ -1,0 +1,31 @@
+server:
+  address: ":8080"
+  adminAddress: "127.0.0.1:9091"
+  profiling: true
+healthCheck:
+  interval: 2s
+  timeout: 500ms
+  unhealthyThreshold: 3
+  healthyThreshold: 2
+routes:
+  - id: users
+    pathPrefix: /api/users
+    stripPrefix: /api/users
+    upstreams: [http://127.0.0.1:8081, http://127.0.0.1:8082, http://127.0.0.1:8083]
+    loadBalancer: round_robin
+    timeout: 3s
+    maxConcurrentRequests: 200
+    retry: {enabled: true, maxAttempts: 2, backoff: 25ms, maxBodyBytes: 1048576}
+    circuitBreaker: {enabled: true, failureThreshold: 5, openDuration: 10s, halfOpenRequests: 2}
+  - id: least
+    pathPrefix: /least
+    stripPrefix: /least
+    upstreams: [http://127.0.0.1:8081, http://127.0.0.1:8082, http://127.0.0.1:8083]
+    loadBalancer: least_connections
+    timeout: 3s
+  - id: limited
+    pathPrefix: /limited
+    stripPrefix: /limited
+    upstreams: [http://127.0.0.1:8081]
+    rateLimit: {requestsPerSecond: 100, burst: 50, perClient: true, maxClients: 4096, clientTTL: 5m}
+    timeout: 3s
