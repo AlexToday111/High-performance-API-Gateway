@@ -1,0 +1,54 @@
+name: high-performance-gateway
+services:
+  gateway:
+    build: .
+    ports: ["127.0.0.1:${GATEWAY_PORT:-8080}:8080", "127.0.0.1:${ADMIN_PORT:-9091}:9091"]
+    volumes: ["./configs:/etc/gateway:ro"]
+    command: ["-config", "/etc/gateway/docker.yaml"]
+    depends_on: [backend-a, backend-b, backend-c, jaeger]
+    stop_grace_period: 35s
+    restart: unless-stopped
+  backend-a:
+    build: .
+    entrypoint: ["/app/mock-backend"]
+    command: ["-id", "backend-a", "-delay", "10ms"]
+    ports: ["127.0.0.1:${BACKEND_A_PORT:-8081}:8081"]
+    environment: {OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"}
+  backend-b:
+    build: .
+    entrypoint: ["/app/mock-backend"]
+    command: ["-id", "backend-b", "-delay", "50ms"]
+    ports: ["127.0.0.1:${BACKEND_B_PORT:-8082}:8081"]
+    environment: {OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"}
+  backend-c:
+    build: .
+    entrypoint: ["/app/mock-backend"]
+    command: ["-id", "backend-c", "-delay", "10ms"]
+    ports: ["127.0.0.1:${BACKEND_C_PORT:-8083}:8081"]
+    environment: {OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"}
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    ports: ["127.0.0.1:${PROMETHEUS_PORT:-9090}:9090"]
+    volumes: ["./deployments/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    depends_on: [gateway]
+  grafana:
+    image: grafana/grafana:12.1.1
+    ports: ["127.0.0.1:${GRAFANA_PORT:-3000}:3000"]
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_SECURITY_ADMIN_PASSWORD: "local-demo-only"
+    volumes:
+      - ./deployments/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deployments/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on: [prometheus]
+  jaeger:
+    image: jaegertracing/all-in-one:1.71.0
+    ports: ["127.0.0.1:${JAEGER_PORT:-16686}:16686"]
+    environment: {COLLECTOR_OTLP_ENABLED: "true"}
+  k6:
+    image: grafana/k6:1.2.3
+    profiles: [load]
+    volumes: ["./load-tests:/scripts:ro"]
+    environment: {BASE_URL: "http://gateway:8080"}
+    command: ["run", "/scripts/gateway.js"]

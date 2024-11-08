@@ -1,0 +1,11 @@
+# Optional artifact-export service, used only when producing documentation PNGs.
+services:
+  grafana:
+    environment:
+      GF_RENDERING_SERVER_URL: http://renderer:8081/render
+      GF_RENDERING_CALLBACK_URL: http://grafana:3000/
+      GF_RENDERING_RENDERER_TOKEN: local-demo-renderer
+  renderer:
+    image: grafana/grafana-image-renderer@sha256:76542ccc4c045e5ff9f80f87b25de6fcc71b31222172de5031a8ceba33772ee1
+    environment:
+      AUTH_TOKEN: local-demo-renderer
