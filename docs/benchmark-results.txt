@@ -1,0 +1,45 @@
+?   	github.com/kudak/gateway/cmd/experiment	[no test files]
+?   	github.com/kudak/gateway/cmd/gateway	[no test files]
+?   	github.com/kudak/gateway/cmd/loadtest	[no test files]
+?   	github.com/kudak/gateway/cmd/mock-backend	[no test files]
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/balancing
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkRoundRobin-16          	27753612	        46.56 ns/op	       0 B/op	       0 allocs/op
+BenchmarkLeastConnections-16    	10333940	       115.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRandom-16              	21042196	        58.94 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/balancing	3.980s
+PASS
+ok  	github.com/kudak/gateway/internal/config	0.010s
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/gateway
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkProxyMiddlewareChain-16    	    4294	    243283 ns/op	   18706 B/op	     166 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/gateway	1.066s
+?   	github.com/kudak/gateway/internal/loadtest	[no test files]
+PASS
+ok  	github.com/kudak/gateway/internal/observability	0.014s
+?   	github.com/kudak/gateway/internal/proxy	[no test files]
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/ratelimit
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkTokenBucket-16    	10560950	       115.1 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/ratelimit	1.345s
+PASS
+ok  	github.com/kudak/gateway/internal/resilience	0.008s
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/routing
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkRouteLookup-16           	 4734423	       264.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSortedPrefixLookup-16    	 1000000	      1128 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/routing	2.396s
+PASS
+ok  	github.com/kudak/gateway/internal/upstream	0.010s

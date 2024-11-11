@@ -1,0 +1,45 @@
+?   	github.com/kudak/gateway/cmd/experiment	[no test files]
+?   	github.com/kudak/gateway/cmd/gateway	[no test files]
+?   	github.com/kudak/gateway/cmd/loadtest	[no test files]
+?   	github.com/kudak/gateway/cmd/mock-backend	[no test files]
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/balancing
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkRoundRobin-16          	24011902	        48.98 ns/op	       0 B/op	       0 allocs/op
+BenchmarkLeastConnections-16    	10101417	       122.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRandom-16              	20639752	        61.44 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/balancing	3.966s
+PASS
+ok  	github.com/kudak/gateway/internal/config	0.012s
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/gateway
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkProxyMiddlewareChain-16    	    4574	    263612 ns/op	   18884 B/op	     168 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/gateway	1.232s
+?   	github.com/kudak/gateway/internal/loadtest	[no test files]
+PASS
+ok  	github.com/kudak/gateway/internal/observability	0.016s
+?   	github.com/kudak/gateway/internal/proxy	[no test files]
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/ratelimit
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkTokenBucket-16    	10291764	       115.7 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/ratelimit	1.324s
+PASS
+ok  	github.com/kudak/gateway/internal/resilience	0.009s
+goos: linux
+goarch: amd64
+pkg: github.com/kudak/gateway/internal/routing
+cpu: AMD Ryzen 7 8745HS w/ Radeon 780M Graphics     
+BenchmarkRouteLookup-16           	 4706317	       254.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkSortedPrefixLookup-16    	 1613253	       770.7 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/kudak/gateway/internal/routing	2.458s
+PASS
+ok  	github.com/kudak/gateway/internal/upstream	0.013s

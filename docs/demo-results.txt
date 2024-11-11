@@ -1,0 +1,312 @@
+Round robin: three instance IDs
+backend-a
+backend-b
+backend-c
+Timeout:
+504
+Active health: backend-a fails probes, then recovers
+{
+    "value":  [
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  false,
+                                     "activeConnections":  0,
+                                     "failureCount":  4,
+                                     "lastFailure":  "2026-10-02T14:36:31.834571144Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:31.834571074Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/b",
+                                     "url":  "http://backend-b:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:31.834553661Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/c",
+                                     "url":  "http://backend-c:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:31.834648183Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  false,
+                                     "activeConnections":  0,
+                                     "failureCount":  3,
+                                     "lastFailure":  "2026-10-02T14:36:31.834466642Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:31.834466512Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/b",
+                                     "url":  "http://backend-b:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:31.834638565Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/c",
+                                     "url":  "http://backend-c:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:31.83463631Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "limited",
+                      "status":  {
+                                     "id":  "limited/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  false,
+                                     "activeConnections":  0,
+                                     "failureCount":  3,
+                                     "lastFailure":  "2026-10-02T14:36:31.834478485Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:31.834478445Z",
+                                     "circuit":  "closed"
+                                 }
+                  }
+              ],
+    "Count":  7
+}
+Invalid reload retains valid routes:
+200
+Breaker: open before passive health threshold, keep health probes green
+500
+500
+500
+500
+500
+500
+503
+{
+    "value":  [
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  2,
+                                     "lastFailure":  "2026-10-02T14:36:42.2967758Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:41.833741384Z",
+                                     "circuit":  "open"
+                                 }
+                  },
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/b",
+                                     "url":  "http://backend-b:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  2,
+                                     "lastFailure":  "2026-10-02T14:36:42.363335154Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:41.833767514Z",
+                                     "circuit":  "open"
+                                 }
+                  },
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/c",
+                                     "url":  "http://backend-c:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  2,
+                                     "lastFailure":  "2026-10-02T14:36:42.392877291Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:41.833576135Z",
+                                     "circuit":  "open"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  3,
+                                     "lastFailure":  "2026-10-02T14:36:31.834466642Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:41.833533813Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/b",
+                                     "url":  "http://backend-b:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:41.833533092Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/c",
+                                     "url":  "http://backend-c:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:41.833972746Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "limited",
+                      "status":  {
+                                     "id":  "limited/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  3,
+                                     "lastFailure":  "2026-10-02T14:36:31.834478485Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:41.833716566Z",
+                                     "circuit":  "closed"
+                                 }
+                  }
+              ],
+    "Count":  7
+}
+200
+200
+200
+200
+200
+200
+Breaker recovered:
+{
+    "value":  [
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  2,
+                                     "lastFailure":  "2026-10-02T14:36:42.2967758Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:53.833478617Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/b",
+                                     "url":  "http://backend-b:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  2,
+                                     "lastFailure":  "2026-10-02T14:36:42.363335154Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:53.833392941Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "users",
+                      "status":  {
+                                     "id":  "users/c",
+                                     "url":  "http://backend-c:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  2,
+                                     "lastFailure":  "2026-10-02T14:36:42.392877291Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:53.833389865Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  3,
+                                     "lastFailure":  "2026-10-02T14:36:31.834466642Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:53.833354367Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/b",
+                                     "url":  "http://backend-b:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:53.833478065Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "least",
+                      "status":  {
+                                     "id":  "least/c",
+                                     "url":  "http://backend-c:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  0,
+                                     "lastFailure":  "0001-01-01T00:00:00Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:53.833474448Z",
+                                     "circuit":  "closed"
+                                 }
+                  },
+                  {
+                      "route":  "limited",
+                      "status":  {
+                                     "id":  "limited/a",
+                                     "url":  "http://backend-a:8081",
+                                     "healthy":  true,
+                                     "activeConnections":  0,
+                                     "failureCount":  3,
+                                     "lastFailure":  "2026-10-02T14:36:31.834478485Z",
+                                     "lastHealthCheck":  "2026-10-02T14:36:53.833456975Z",
+                                     "circuit":  "closed"
+                                 }
+                  }
+              ],
+    "Count":  7
+}

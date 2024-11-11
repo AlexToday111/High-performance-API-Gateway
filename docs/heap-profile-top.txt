@@ -1,0 +1,123 @@
+File: gateway.test
+Build ID: 2abf272b0f7062f86ec46480b08672e98666d1d2
+Type: alloc_space
+Time: 2026-10-02 14:30:20 UTC
+Showing nodes accounting for 139.97MB, 93.56% of 149.61MB total
+Dropped 59 nodes (cum <= 0.75MB)
+      flat  flat%   sum%        cum   cum%
+   31.62MB 21.14% 21.14%    31.62MB 21.14%  bufio.NewReaderSize (inline)
+       9MB  6.02% 27.15%        9MB  6.02%  net/http.(*Request).WithContext (inline)
+    8.50MB  5.68% 32.84%        9MB  6.02%  net/textproto.readMIMEHeader
+       8MB  5.35% 38.18%        8MB  5.35%  net/http.Header.Clone (inline)
+       7MB  4.68% 42.86%        7MB  4.68%  net/textproto.MIMEHeader.Set (inline)
+    5.67MB  3.79% 46.66%     5.67MB  3.79%  github.com/kudak/gateway/internal/proxy.(*bufferPool).Get
+    5.50MB  3.68% 50.33%     8.50MB  5.68%  net/http.(*persistConn).roundTrip
+    5.50MB  3.68% 54.01%        7MB  4.68%  go.opentelemetry.io/otel/internal/global.(*tracer).newSpan
+    4.50MB  3.01% 57.02%     4.50MB  3.01%  net/url.parse
+       4MB  2.67% 59.69%       28MB 18.72%  github.com/kudak/gateway/internal/proxy.(*attemptTransport).RoundTrip
+    3.50MB  2.34% 62.03%     8.50MB  5.68%  net/http.(*Request).Clone
+       3MB  2.01% 64.04%        3MB  2.01%  net/http/httptest.NewRecorder (inline)
+    2.50MB  1.67% 65.71%     2.50MB  1.67%  mime.ParseMediaType
+    2.50MB  1.67% 67.38%        6MB  4.01%  github.com/kudak/gateway/internal/gateway.(*Gateway).ServeHTTP.func1
+    2.50MB  1.67% 69.05%     2.50MB  1.67%  time.newTimer
+    2.50MB  1.67% 70.72%     4.50MB  3.01%  context.withCancel (inline)
+       2MB  1.34% 72.06%    11.50MB  7.69%  net/http.readRequest
+       2MB  1.34% 73.40%        2MB  1.34%  context.(*cancelCtx).propagateCancel
+       2MB  1.34% 74.73%        2MB  1.34%  net/http.newTransferWriter
+       2MB  1.34% 76.07%        3MB  2.01%  net/http.(*Transport).getConn
+       2MB  1.34% 77.41%        2MB  1.34%  context.(*cancelCtx).Done
+       2MB  1.34% 78.74%    78.19MB 52.26%  github.com/kudak/gateway/internal/gateway.(*Gateway).ServeHTTP
+       2MB  1.34% 80.08%        2MB  1.34%  context.WithValue
+    1.50MB  1.00% 81.09%     1.50MB  1.00%  runtime.mallocgc
+    1.50MB  1.00% 82.09%     1.50MB  1.00%  log/slog.(*Record).Add
+    1.50MB  1.00% 83.09%     1.50MB  1.00%  net/http.cloneURL (inline)
+    1.50MB  1.00% 84.09%     1.50MB  1.00%  net.(*conn).Read
+    1.16MB  0.77% 84.87%     1.16MB  0.77%  runtime/pprof.StartCPUProfile
+       1MB  0.67% 85.54%        1MB  0.67%  log/slog/internal/buffer.init.func1
+       1MB  0.67% 86.20%     9.50MB  6.35%  net/http.(*conn).readRequest
+       1MB  0.67% 86.87%     6.50MB  4.35%  net/http.ReadResponse
+       1MB  0.67% 87.54%    55.68MB 37.22%  net/http/httputil.(*ReverseProxy).ServeHTTP
+       1MB  0.67% 88.21%        1MB  0.67%  time.NewTimer
+       1MB  0.67% 88.88%     7.50MB  5.01%  net/http.(*persistConn).readLoop
+       1MB  0.67% 89.55%        1MB  0.67%  bytes.(*Buffer).grow
+       1MB  0.67% 90.22%        1MB  0.67%  net/http.readTransfer
+       1MB  0.67% 90.88%        1MB  0.67%  testing.(*B).ResetTimer
+       1MB  0.67% 91.55%        3MB  2.01%  net/http.(*Request).write
+       1MB  0.67% 92.22%        1MB  0.67%  net/textproto.MIMEHeader.Add (inline)
+    0.50MB  0.33% 92.55%        2MB  1.34%  context.WithDeadlineCause
+    0.50MB  0.33% 92.89%       16MB 10.70%  net/http.(*Transport).roundTrip
+    0.50MB  0.33% 93.22%        1MB  0.67%  encoding/json.newEncodeState
+    0.50MB  0.33% 93.56%        1MB  0.67%  github.com/kudak/gateway/internal/proxy.(*bufferPool).Put
+         0     0% 93.56%    31.62MB 21.14%  bufio.NewReader (inline)
+         0     0% 93.56%        1MB  0.67%  bytes.(*Buffer).Write
+         0     0% 93.56%     1.50MB  1.00%  context.WithCancel
+         0     0% 93.56%        3MB  2.01%  context.WithCancelCause
+         0     0% 93.56%        2MB  1.34%  context.WithDeadline (inline)
+         0     0% 93.56%        2MB  1.34%  context.WithTimeout
+         0     0% 93.56%        1MB  0.67%  encoding/json.(*Encoder).Encode
+         0     0% 93.56%        1MB  0.67%  github.com/kudak/gateway/internal/gateway.(*statusWriter).Write
+         0     0% 93.56%     4.50MB  3.01%  github.com/kudak/gateway/internal/gateway.(*statusWriter).WriteHeader
+         0     0% 93.56%   119.81MB 80.08%  github.com/kudak/gateway/internal/gateway.BenchmarkProxyMiddlewareChain
+         0     0% 93.56%   119.31MB 79.75%  github.com/kudak/gateway/internal/gateway.response
+         0     0% 93.56%    55.68MB 37.22%  github.com/kudak/gateway/internal/proxy.(*Proxy).ServeHTTP (inline)
+         0     0% 93.56%        2MB  1.34%  github.com/kudak/gateway/internal/proxy.New.func1
+         0     0% 93.56%        7MB  4.68%  go.opentelemetry.io/otel/internal/global.(*tracer).Start
+         0     0% 93.56%     1.50MB  1.00%  go.opentelemetry.io/otel/trace.ContextWithSpan (inline)
+         0     0% 93.56%        2MB  1.34%  log/slog.(*JSONHandler).Handle
+         0     0% 93.56%     3.50MB  2.34%  log/slog.(*Logger).Info (inline)
+         0     0% 93.56%     3.50MB  2.34%  log/slog.(*Logger).log
+         0     0% 93.56%        2MB  1.34%  log/slog.(*commonHandler).handle
+         0     0% 93.56%        1MB  0.67%  log/slog.(*commonHandler).newHandleState
+         0     0% 93.56%        1MB  0.67%  log/slog.(*handleState).appendAttr
+         0     0% 93.56%        1MB  0.67%  log/slog.(*handleState).appendNonBuiltIns
+         0     0% 93.56%        1MB  0.67%  log/slog.(*handleState).appendNonBuiltIns.func1 (inline)
+         0     0% 93.56%        1MB  0.67%  log/slog.(*handleState).appendValue
+         0     0% 93.56%        1MB  0.67%  log/slog.Record.Attrs (inline)
+         0     0% 93.56%        1MB  0.67%  log/slog.appendJSONMarshal
+         0     0% 93.56%        1MB  0.67%  log/slog.appendJSONValue
+         0     0% 93.56%        1MB  0.67%  log/slog/internal/buffer.New (inline)
+         0     0% 93.56%     1.66MB  1.11%  main.main
+         0     0% 93.56%       16MB 10.70%  net/http.(*Transport).RoundTrip
+         0     0% 93.56%    10.50MB  7.02%  net/http.(*conn).serve
+         0     0% 93.56%     1.50MB  1.00%  net/http.(*connReader).backgroundRead
+         0     0% 93.56%     6.50MB  4.35%  net/http.(*persistConn).readResponse
+         0     0% 93.56%        3MB  2.01%  net/http.(*persistConn).writeLoop
+         0     0% 93.56%        1MB  0.67%  net/http.Header.Add (inline)
+         0     0% 93.56%        7MB  4.68%  net/http.Header.Set (inline)
+         0     0% 93.56%     3.50MB  2.34%  net/http.ReadRequest
+         0     0% 93.56%        1MB  0.67%  net/http/httptest.(*ResponseRecorder).Write
+         0     0% 93.56%     4.50MB  3.01%  net/http/httptest.(*ResponseRecorder).WriteHeader
+         0     0% 93.56%    38.12MB 25.48%  net/http/httptest.NewRequest (inline)
+         0     0% 93.56%    38.12MB 25.48%  net/http/httptest.NewRequestWithContext
+         0     0% 93.56%        2MB  1.34%  net/http/httputil.(*ProxyRequest).SetXForwarded
+         0     0% 93.56%        1MB  0.67%  net/http/httputil.(*ReverseProxy).copyBuffer
+         0     0% 93.56%     8.67MB  5.80%  net/http/httputil.(*ReverseProxy).copyResponse
+         0     0% 93.56%     2.50MB  1.67%  net/http/httputil.(*ReverseProxy).flushInterval
+         0     0% 93.56%        1MB  0.67%  net/http/httputil.(*maxLatencyWriter).Write
+         0     0% 93.56%        1MB  0.67%  net/http/httputil.copyHeader
+         0     0% 93.56%        9MB  6.02%  net/textproto.(*Reader).ReadMIMEHeader (inline)
+         0     0% 93.56%     4.50MB  3.01%  net/url.ParseRequestURI
+         0     0% 93.56%     1.50MB  1.00%  runtime.allocm
+         0     0% 93.56%        1MB  0.67%  runtime.doInit (inline)
+         0     0% 93.56%        1MB  0.67%  runtime.doInit1
+         0     0% 93.56%     2.66MB  1.78%  runtime.main
+         0     0% 93.56%        1MB  0.67%  runtime.mstart
+         0     0% 93.56%        1MB  0.67%  runtime.mstart0
+         0     0% 93.56%        1MB  0.67%  runtime.mstart1
+         0     0% 93.56%     1.50MB  1.00%  runtime.newm
+         0     0% 93.56%     1.50MB  1.00%  runtime.newobject
+         0     0% 93.56%        1MB  0.67%  runtime.schedule
+         0     0% 93.56%        1MB  0.67%  runtime.startm
+         0     0% 93.56%        1MB  0.67%  runtime.wakep
+         0     0% 93.56%     1.14MB  0.76%  runtime/pprof.(*profileBuilder).appendLocsForStack
+         0     0% 93.56%     1.14MB  0.76%  runtime/pprof.(*profileBuilder).build
+         0     0% 93.56%        1MB  0.67%  runtime/pprof.(*profileBuilder).readMapping
+         0     0% 93.56%        1MB  0.67%  runtime/pprof.newProfileBuilder
+         0     0% 93.56%     2.14MB  1.43%  runtime/pprof.profileWriter
+         0     0% 93.56%     1.50MB  1.00%  sync.(*Pool).Get
+         0     0% 93.56%   120.31MB 80.42%  testing.(*B).run1.func1
+         0     0% 93.56%   120.81MB 80.75%  testing.(*B).runN
+         0     0% 93.56%     1.66MB  1.11%  testing.(*M).Run
+         0     0% 93.56%     1.16MB  0.77%  testing.(*M).before
+         0     0% 93.56%     1.16MB  0.77%  testing/internal/testdeps.TestDeps.StartCPUProfile
+         0     0% 93.56%     2.50MB  1.67%  time.AfterFunc

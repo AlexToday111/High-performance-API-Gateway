@@ -1,0 +1,203 @@
+File: gateway.test
+Build ID: 2abf272b0f7062f86ec46480b08672e98666d1d2
+Type: cpu
+Time: 2026-10-02 14:30:18 UTC
+Duration: 2.06s, Total samples = 2.95s (143.00%)
+Showing nodes accounting for 2.33s, 78.98% of 2.95s total
+Dropped 191 nodes (cum <= 0.01s)
+      flat  flat%   sum%        cum   cum%
+     0.79s 26.78% 26.78%      0.79s 26.78%  internal/runtime/syscall/linux.Syscall6
+     0.75s 25.42% 52.20%      0.75s 25.42%  runtime.futex
+     0.12s  4.07% 56.27%      0.12s  4.07%  runtime.write1
+     0.06s  2.03% 58.31%      0.06s  2.03%  runtime.usleep
+     0.05s  1.69% 60.00%      0.12s  4.07%  runtime.selectgo
+     0.03s  1.02% 61.02%      0.03s  1.02%  indexbytebody
+     0.03s  1.02% 62.03%      0.03s  1.02%  runtime.memmove
+     0.03s  1.02% 63.05%      0.03s  1.02%  runtime.nextFreeFast (inline)
+     0.02s  0.68% 63.73%      0.02s  0.68%  log/slog.Value.Kind (inline)
+     0.02s  0.68% 64.41%      0.12s  4.07%  net/http/httputil.(*ReverseProxy).copyBuffer
+     0.02s  0.68% 65.08%      0.02s  0.68%  runtime.(*mspan).refillAllocCache
+     0.02s  0.68% 65.76%      0.02s  0.68%  runtime.(*mspan).writeHeapBitsSmall
+     0.02s  0.68% 66.44%      0.02s  0.68%  runtime.chanrecv
+     0.02s  0.68% 67.12%      0.08s  2.71%  runtime.runqgrab
+     0.01s  0.34% 67.46%      0.14s  4.75%  bufio.(*Reader).fill
+     0.01s  0.34% 67.80%      0.03s  1.02%  context.WithCancelCause.func1
+     0.01s  0.34% 68.14%      0.02s  0.68%  context.removeChild
+     0.01s  0.34% 68.47%      0.02s  0.68%  encoding/json.(*encodeState).reflectValue
+     0.01s  0.34% 68.81%      0.79s 26.78%  github.com/kudak/gateway/internal/gateway.(*Gateway).ServeHTTP
+     0.01s  0.34% 69.15%      0.22s  7.46%  github.com/kudak/gateway/internal/proxy.(*attemptTransport).RoundTrip
+     0.01s  0.34% 69.49%      0.56s 18.98%  internal/poll.(*FD).Write
+     0.01s  0.34% 69.83%      0.02s  0.68%  internal/runtime/atomic.(*Bool).Load (inline)
+     0.01s  0.34% 70.17%      0.03s  1.02%  log/slog.(*Record).Add
+     0.01s  0.34% 70.51%      0.07s  2.37%  log/slog.(*commonHandler).handle
+     0.01s  0.34% 70.85%      0.03s  1.02%  log/slog.appendJSONValue
+     0.01s  0.34% 71.19%      0.02s  0.68%  net/http.(*Request).WithContext (inline)
+     0.01s  0.34% 71.53%      0.02s  0.68%  net/http.(*Transport).getConn
+     0.01s  0.34% 71.86%      0.07s  2.37%  net/http.(*connReader).Read
+     0.01s  0.34% 72.20%      0.02s  0.68%  net/http.Header.writeSubset
+     0.01s  0.34% 72.54%      0.02s  0.68%  net/http.newTextprotoReader
+     0.01s  0.34% 72.88%      0.24s  8.14%  net/http/httputil.(*ReverseProxy).copyResponse
+     0.01s  0.34% 73.22%      0.02s  0.68%  net/textproto.(*Reader).readContinuedLineSlice
+     0.01s  0.34% 73.56%      0.02s  0.68%  net/textproto.(*Reader).upcomingHeaderKeys
+     0.01s  0.34% 73.90%      0.14s  4.75%  runtime.(*timer).modify
+     0.01s  0.34% 74.24%      0.02s  0.68%  runtime.(*timer).stop
+     0.01s  0.34% 74.58%      0.03s  1.02%  runtime.(*timers).check
+     0.01s  0.34% 74.92%      0.02s  0.68%  runtime.entersyscall
+     0.01s  0.34% 75.25%      0.02s  0.68%  runtime.execute
+     0.01s  0.34% 75.59%      0.02s  0.68%  runtime.findnull
+     0.01s  0.34% 75.93%      0.03s  1.02%  runtime.isSystemGoroutine
+     0.01s  0.34% 76.27%      0.02s  0.68%  runtime.makechan
+     0.01s  0.34% 76.61%      0.15s  5.08%  runtime.netpoll
+     0.01s  0.34% 76.95%      0.08s  2.71%  runtime.newobject
+     0.01s  0.34% 77.29%      0.04s  1.36%  runtime.newproc1
+     0.01s  0.34% 77.63%      0.71s 24.07%  runtime.schedule
+     0.01s  0.34% 77.97%      0.11s  3.73%  runtime.stealWork
+     0.01s  0.34% 78.31%      0.17s  5.76%  runtime.stopm
+     0.01s  0.34% 78.64%      0.13s  4.41%  runtime.wakeNetPoller
+     0.01s  0.34% 78.98%      0.02s  0.68%  time.Time.appendFormat
+         0     0% 78.98%      0.12s  4.07%  bufio.(*Reader).Peek
+         0     0% 78.98%      0.02s  0.68%  bufio.(*Reader).ReadLine
+         0     0% 78.98%      0.02s  0.68%  bufio.(*Reader).ReadSlice
+         0     0% 78.98%      0.60s 20.34%  bufio.(*Writer).Flush
+         0     0% 78.98%      0.02s  0.68%  bytes.IndexByte (inline)
+         0     0% 78.98%      0.02s  0.68%  context.(*cancelCtx).cancel
+         0     0% 78.98%      0.02s  0.68%  context.(*cancelCtx).propagateCancel
+         0     0% 78.98%      0.02s  0.68%  context.WithCancel
+         0     0% 78.98%      0.04s  1.36%  context.WithDeadline (inline)
+         0     0% 78.98%      0.04s  1.36%  context.WithDeadlineCause
+         0     0% 78.98%      0.04s  1.36%  context.WithTimeout
+         0     0% 78.98%      0.02s  0.68%  context.WithValue
+         0     0% 78.98%      0.02s  0.68%  context.withCancel (inline)
+         0     0% 78.98%      0.02s  0.68%  encoding/json.(*Encoder).Encode
+         0     0% 78.98%      0.02s  0.68%  encoding/json.(*encodeState).marshal
+         0     0% 78.98%      0.12s  4.07%  github.com/kudak/gateway/internal/gateway.(*Gateway).ServeHTTP.func1
+         0     0% 78.98%      0.85s 28.81%  github.com/kudak/gateway/internal/gateway.BenchmarkProxyMiddlewareChain
+         0     0% 78.98%      0.85s 28.81%  github.com/kudak/gateway/internal/gateway.response
+         0     0% 78.98%      0.53s 17.97%  github.com/kudak/gateway/internal/proxy.(*Proxy).ServeHTTP (inline)
+         0     0% 78.98%      0.02s  0.68%  github.com/kudak/gateway/internal/proxy.(*trackedBody).Close
+         0     0% 78.98%      0.02s  0.68%  github.com/prometheus/client_golang/prometheus.(*MetricVec).GetMetricWithLabelValues
+         0     0% 78.98%      0.04s  1.36%  go.opentelemetry.io/otel/internal/global.(*tracer).Start
+         0     0% 78.98%      0.04s  1.36%  go.opentelemetry.io/otel/internal/global.(*tracer).newSpan
+         0     0% 78.98%      0.13s  4.41%  internal/poll.(*FD).Read
+         0     0% 78.98%      0.67s 22.71%  internal/poll.ignoringEINTRIO (inline)
+         0     0% 78.98%      0.02s  0.68%  internal/runtime/maps.(*Map).growToSmall
+         0     0% 78.98%      0.14s  4.75%  internal/runtime/syscall/linux.EpollWait
+         0     0% 78.98%      0.07s  2.37%  log/slog.(*JSONHandler).Handle
+         0     0% 78.98%      0.11s  3.73%  log/slog.(*Logger).Info (inline)
+         0     0% 78.98%      0.11s  3.73%  log/slog.(*Logger).log
+         0     0% 78.98%      0.05s  1.69%  log/slog.(*handleState).appendAttr
+         0     0% 78.98%      0.05s  1.69%  log/slog.(*handleState).appendNonBuiltIns
+         0     0% 78.98%      0.05s  1.69%  log/slog.(*handleState).appendNonBuiltIns.func1 (inline)
+         0     0% 78.98%      0.04s  1.36%  log/slog.(*handleState).appendValue
+         0     0% 78.98%      0.05s  1.69%  log/slog.Record.Attrs (inline)
+         0     0% 78.98%      0.02s  0.68%  log/slog.appendJSONMarshal
+         0     0% 78.98%      0.13s  4.41%  net.(*conn).Read
+         0     0% 78.98%      0.56s 18.98%  net.(*conn).Write
+         0     0% 78.98%      0.13s  4.41%  net.(*netFD).Read
+         0     0% 78.98%      0.56s 18.98%  net.(*netFD).Write
+         0     0% 78.98%      0.03s  1.02%  net/http.(*Request).write
+         0     0% 78.98%      0.17s  5.76%  net/http.(*Transport).RoundTrip
+         0     0% 78.98%      0.03s  1.02%  net/http.(*Transport).prepareTransportCancel.func1
+         0     0% 78.98%      0.17s  5.76%  net/http.(*Transport).roundTrip
+         0     0% 78.98%      0.10s  3.39%  net/http.(*bodyEOFSignal).Read
+         0     0% 78.98%      0.09s  3.05%  net/http.(*bodyEOFSignal).condfn (inline)
+         0     0% 78.98%      0.04s  1.36%  net/http.(*chunkWriter).Write
+         0     0% 78.98%      0.04s  1.36%  net/http.(*chunkWriter).writeHeader
+         0     0% 78.98%      0.12s  4.07%  net/http.(*conn).readRequest
+         0     0% 78.98%      0.63s 21.36%  net/http.(*conn).serve
+         0     0% 78.98%      0.05s  1.69%  net/http.(*connReader).backgroundRead
+         0     0% 78.98%      0.08s  2.71%  net/http.(*connReader).startBackgroundRead
+         0     0% 78.98%      0.04s  1.36%  net/http.(*persistConn).Read
+         0     0% 78.98%      0.23s  7.80%  net/http.(*persistConn).readLoop
+         0     0% 78.98%      0.09s  3.05%  net/http.(*persistConn).readLoop.func4
+         0     0% 78.98%      0.03s  1.02%  net/http.(*persistConn).readResponse
+         0     0% 78.98%      0.13s  4.41%  net/http.(*persistConn).roundTrip
+         0     0% 78.98%      0.39s 13.22%  net/http.(*persistConn).writeLoop
+         0     0% 78.98%      0.35s 11.86%  net/http.(*response).finishRequest
+         0     0% 78.98%      0.02s  0.68%  net/http.Header.Del (inline)
+         0     0% 78.98%      0.02s  0.68%  net/http.Header.Set (inline)
+         0     0% 78.98%      0.05s  1.69%  net/http.ReadRequest
+         0     0% 78.98%      0.03s  1.02%  net/http.ReadResponse
+         0     0% 78.98%      0.31s 10.51%  net/http.checkConnErrorWriter.Write
+         0     0% 78.98%      0.25s  8.47%  net/http.persistConnWriter.Write
+         0     0% 78.98%      0.14s  4.75%  net/http.readRequest
+         0     0% 78.98%      0.05s  1.69%  net/http/httptest.NewRequest (inline)
+         0     0% 78.98%      0.05s  1.69%  net/http/httptest.NewRequestWithContext
+         0     0% 78.98%      0.53s 17.97%  net/http/httputil.(*ReverseProxy).ServeHTTP
+         0     0% 78.98%      0.02s  0.68%  net/textproto.(*Reader).ReadLine (inline)
+         0     0% 78.98%      0.06s  2.03%  net/textproto.(*Reader).ReadMIMEHeader (inline)
+         0     0% 78.98%      0.02s  0.68%  net/textproto.(*Reader).readLineSlice
+         0     0% 78.98%      0.02s  0.68%  net/textproto.MIMEHeader.Del (inline)
+         0     0% 78.98%      0.02s  0.68%  net/textproto.MIMEHeader.Set (inline)
+         0     0% 78.98%      0.06s  2.03%  net/textproto.readMIMEHeader
+         0     0% 78.98%      0.02s  0.68%  net/url.(*URL).setPath
+         0     0% 78.98%      0.02s  0.68%  net/url.ParseRequestURI
+         0     0% 78.98%      0.02s  0.68%  net/url.parse
+         0     0% 78.98%      0.04s  1.36%  runtime.(*mcache).nextFree
+         0     0% 78.98%      0.03s  1.02%  runtime.(*mcache).refill
+         0     0% 78.98%      0.03s  1.02%  runtime.(*mcentral).cacheSpan
+         0     0% 78.98%      0.02s  0.68%  runtime.(*moduledata).funcName
+         0     0% 78.98%      0.13s  4.41%  runtime.(*timer).maybeAdd
+         0     0% 78.98%      0.02s  0.68%  runtime.(*timer).unlockAndRun
+         0     0% 78.98%      0.02s  0.68%  runtime.(*timers).run
+         0     0% 78.98%      0.02s  0.68%  runtime.(*unwinder).next
+         0     0% 78.98%      0.26s  8.81%  runtime.chansend
+         0     0% 78.98%      0.26s  8.81%  runtime.chansend1
+         0     0% 78.98%      0.02s  0.68%  runtime.convT
+         0     0% 78.98%      0.52s 17.63%  runtime.findRunnable
+         0     0% 78.98%      0.02s  0.68%  runtime.forEachP (inline)
+         0     0% 78.98%      0.02s  0.68%  runtime.forEachPInternal
+         0     0% 78.98%      0.02s  0.68%  runtime.funcname (inline)
+         0     0% 78.98%      0.15s  5.08%  runtime.futexsleep
+         0     0% 78.98%      0.60s 20.34%  runtime.futexwakeup
+         0     0% 78.98%      0.06s  2.03%  runtime.gcBgMarkWorker
+         0     0% 78.98%      0.04s  1.36%  runtime.gcBgMarkWorker.func2
+         0     0% 78.98%      0.04s  1.36%  runtime.gcDrain
+         0     0% 78.98%      0.04s  1.36%  runtime.gcDrainMarkWorkerDedicated (inline)
+         0     0% 78.98%      0.02s  0.68%  runtime.gcMarkDone
+         0     0% 78.98%      0.03s  1.02%  runtime.gcStart
+         0     0% 78.98%      0.03s  1.02%  runtime.gcStart.func4
+         0     0% 78.98%      0.10s  3.39%  runtime.goexit0
+         0     0% 78.98%      0.33s 11.19%  runtime.goready (inline)
+         0     0% 78.98%      0.02s  0.68%  runtime.gostringnocopy (inline)
+         0     0% 78.98%      0.02s  0.68%  runtime.heapSetTypeNoHeader (inline)
+         0     0% 78.98%      0.15s  5.08%  runtime.mPark (inline)
+         0     0% 78.98%      0.02s  0.68%  runtime.makeslice
+         0     0% 78.98%      0.14s  4.75%  runtime.mallocgc
+         0     0% 78.98%      0.13s  4.41%  runtime.mallocgcSmallScanNoHeader
+         0     0% 78.98%      0.02s  0.68%  runtime.mapassign_faststr
+         0     0% 78.98%      0.03s  1.02%  runtime.markroot
+         0     0% 78.98%      0.02s  0.68%  runtime.markroot.func1
+         0     0% 78.98%      0.71s 24.07%  runtime.mcall
+         0     0% 78.98%      0.12s  4.07%  runtime.netpollBreak
+         0     0% 78.98%      0.10s  3.39%  runtime.newproc
+         0     0% 78.98%      0.10s  3.39%  runtime.newproc.func1
+         0     0% 78.98%      0.15s  5.08%  runtime.notesleep
+         0     0% 78.98%      0.60s 20.34%  runtime.notewakeup
+         0     0% 78.98%      0.61s 20.68%  runtime.park_m
+         0     0% 78.98%      0.34s 11.53%  runtime.ready
+         0     0% 78.98%      0.15s  5.08%  runtime.resetspinning
+         0     0% 78.98%      0.08s  2.71%  runtime.runqsteal
+         0     0% 78.98%      0.02s  0.68%  runtime.selectnbrecv
+         0     0% 78.98%      0.33s 11.19%  runtime.send
+         0     0% 78.98%      0.33s 11.19%  runtime.send.goready.func1
+         0     0% 78.98%      0.03s  1.02%  runtime.startTheWorldWithSema
+         0     0% 78.98%      0.56s 18.98%  runtime.startm
+         0     0% 78.98%      0.52s 17.63%  runtime.systemstack
+         0     0% 78.98%      0.56s 18.98%  runtime.wakep
+         0     0% 78.98%      0.12s  4.07%  runtime.write
+         0     0% 78.98%      0.02s  0.68%  strings.(*Reader).Read
+         0     0% 78.98%      0.65s 22.03%  syscall.RawSyscall6
+         0     0% 78.98%      0.12s  4.07%  syscall.Read (inline)
+         0     0% 78.98%      0.68s 23.05%  syscall.Syscall
+         0     0% 78.98%      0.55s 18.64%  syscall.Write (inline)
+         0     0% 78.98%      0.12s  4.07%  syscall.read
+         0     0% 78.98%      0.55s 18.64%  syscall.write
+         0     0% 78.98%      0.85s 28.81%  testing.(*B).run1.func1
+         0     0% 78.98%      0.85s 28.81%  testing.(*B).runN
+         0     0% 78.98%      0.02s  0.68%  time.(*Timer).Stop
+         0     0% 78.98%      0.15s  5.08%  time.AfterFunc
+         0     0% 78.98%      0.02s  0.68%  time.Time.AppendFormat
+         0     0% 78.98%      0.02s  0.68%  time.goFunc
+         0     0% 78.98%      0.15s  5.08%  time.newTimer
+         0     0% 78.98%      0.02s  0.68%  time.stopTimer
